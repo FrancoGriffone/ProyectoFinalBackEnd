@@ -6,8 +6,8 @@ const carritoSchema = new mongoose.Schema({
       type: Date,
       default: Date.now  
     },
-    email: {type: String, required: true},
-    direccion: {type: String, required: true},
+    email: String,
+    direccion: String,
 });
 
 const CarritoModel = mongoose.model("carritos", carritoSchema);

@@ -7,7 +7,7 @@ const router = express.Router();
 
 const carrito = new Carrito(); 
 
-router.post("/crearcarrito/", passport.authenticate('jwt', {session: false}) , async (req, res) =>{
+router.post("/crearcarrito", passport.authenticate('jwt', {session: false}) , async (req, res) =>{
     const carritoCreado = await carrito.crearCarrito();
     res.send(carritoCreado);
 });
@@ -34,7 +34,7 @@ router.get("/:id", passport.authenticate('jwt', {session: false}) , async (req, 
     const carritoPorId = await carrito.listar(req.params.id);
     res.send(carritoPorId);
 });
-router.post("/:id/agregarproducto/:idPrd/:usuario", passport.authenticate('jwt', {session: false}) , async (req, res) => {
+router.post("/:id/agregarproducto/:idPrd", passport.authenticate('jwt', {session: false}) , async (req, res) => {
     const respuesta = await carrito.guardarProductoEnCarrito(
         req.params.id,
         req.params.idPrd,
