@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario de Ingreso de Productos</title>
+    <link rel="stylesheet" href=https://bootswatch.com/5/solar/bootstrap.min.css>
+    <link rel="shortcut icon" href="#">
+</head>
+
+<body>
+    <div class="container mt-3">
+        <h1 class="alert alert-success">
+            Bienvenido <span id="usernameHome"></span>
+                <button class="btn btn-warning float-right mt-2" onclick="location.href='/logout'">
+                    Logout
+                </button>
+        </h1>
+    </div>
+    <script>
+        async function getUserName() {
+            let res = await fetch("/username")
+            let username = await res.json()
+            return username
+        }
+        let html = document.getElementById("usernameHome")
+        getUserName().then(username => html.innerHTML += username)
+        
+    </script>
+</body>
+
+</html>
