@@ -1,0 +1,359 @@
+{
+	"info": {
+		"_postman_id": "b3cdf3f1-e72d-43e7-8c54-f049b75e1f8a",
+		"name": "3da Entrega",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "23291798"
+	},
+	"item": [
+		{
+			"name": "Productos",
+			"item": [
+				{
+					"name": "getProductoBuscado",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/productos/635d7973a832854d72aacd14",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"productos",
+								"635d7973a832854d72aacd14"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getProductos",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/productos",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"productos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "postProducto",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nombre\": \"Robot PROFE\",\r\n    \"descripcion\": \"Robot del PROFE, con la vestimenta de las clases de la comsion\",\r\n    \"categoria\": \"Jueguetes\",\r\n    \"precio\": 1000,\r\n    \"stock\": 2,\r\n    \"foto\": \"https://www.europasur.es/2018/11/17/los_barrios/IES-Sierra-Luna-Antonio-Perez_1301280347_91464133_667x375.jpg\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api/productos/crearproducto/?admin=true",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"productos",
+								"crearproducto",
+								""
+							],
+							"query": [
+								{
+									"key": "admin",
+									"value": "true"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteProducto",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/productos/borrarproducto/63d8663bd64fdf47cedca9a0?admin=true",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"productos",
+								"borrarproducto",
+								"63d8663bd64fdf47cedca9a0"
+							],
+							"query": [
+								{
+									"key": "admin",
+									"value": "true"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "putProducto",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nombre\": \"FUNKO DIBU\",\r\n    \"descripcion\": \"FUNKO del Dibu Martinez, con la vestimenta de la final del mundial. Mira que te como hermano\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api/productos/actualizarproducto/64001da1a961f7b13511c407?admin=true",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"productos",
+								"actualizarproducto",
+								"64001da1a961f7b13511c407"
+							],
+							"query": [
+								{
+									"key": "admin",
+									"value": "true"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getProductoCategoria",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Carrito",
+			"item": [
+				{
+					"name": "postNuevoCarrito",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/carritos/crearcarrito",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"carritos",
+								"crearcarrito"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteCarrito",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/carritos/borrarcarrito/635ece9fb0e65a011c40745d",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"carritos",
+								"borrarcarrito",
+								"635ece9fb0e65a011c40745d"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteProductoCarrito",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/carritos/635eed9ca430d811672bd2f6/borrarproducto/635d7973a832854d72aacd14",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"carritos",
+								"635eed9ca430d811672bd2f6",
+								"borrarproducto",
+								"635d7973a832854d72aacd14"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getCarritos",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/carritos",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"carritos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getCarritosId",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/carritos/63baf7ec3412f7cf13074e82",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"carritos",
+								"63baf7ec3412f7cf13074e82"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "postGuardarProductoCarrito",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/carritos/635ee6deb97c8c1360c75f20/agregarproducto/635d7973a832854d72aacd14",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"carritos",
+								"635ee6deb97c8c1360c75f20",
+								"agregarproducto",
+								"635d7973a832854d72aacd14"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "postCompra",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/carritos/63baf7ec3412f7cf13074e82/finalizarcompra",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"carritos",
+								"63baf7ec3412f7cf13074e82",
+								"finalizarcompra"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "confirmarCompra",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/mandarMail/63baf7ec3412f7cf13074e82",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"mandarMail",
+								"63baf7ec3412f7cf13074e82"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Mensajes",
+			"item": [
+				{
+					"name": "GET mensajes",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "GET mensajesByEmail",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "POST mensajes",
+					"request": {
+						"method": "POST",
+						"header": []
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
