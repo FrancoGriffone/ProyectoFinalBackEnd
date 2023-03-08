@@ -48,5 +48,13 @@
   "devDependencies": {
     "@types/express": "^4.17.14",
     "@types/express-session": "^1.17.5"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FrancoGriffone/ProyectoFinalBackEnd.git"
+  },
+  "bugs": {
+    "url": "https://github.com/FrancoGriffone/ProyectoFinalBackEnd/issues"
+  },
+  "homepage": "https://github.com/FrancoGriffone/ProyectoFinalBackEnd#readme"
 }
