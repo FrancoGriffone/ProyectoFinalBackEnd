@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 import UserModel from "./../models/userSchema.js"
-import bCrypt from "bCrypt"
+import {bCrypt } from "bCrypt"
 import { createTransport } from 'nodemailer';
 
 import passport from "passport";
