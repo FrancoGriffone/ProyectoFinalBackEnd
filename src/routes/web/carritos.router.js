@@ -1,7 +1,7 @@
 import express from "express";
-import userModel from "../../models/userSchema.js";
 import Carrito from "../../DAOs/Carrito.dao.class.js";
 import passport from "passport";
+import jwt from "jsonwebtoken";
 
 const router = express.Router();
 
@@ -26,6 +26,7 @@ router.delete("/:id/borrarproducto/:id_prod", passport.authenticate('jwt', {sess
 });
 
 router.get("/", passport.authenticate('jwt', {session: false}) , async (req, res) => {
+    console.log(req.params)
     const listaCarritos = await carrito.listarAll();
     res.send(listaCarritos);
 });
@@ -42,6 +43,11 @@ router.post("/:id/agregarproducto/:idPrd", passport.authenticate('jwt', {session
    res.send((respuesta))
 });
 
+router.post("/crearpedido", passport.authenticate('jwt', {session: false}) , async (req, res) =>{
+    const pedidoCreado = await carrito.crearPedido();
+    res.send(pedidoCreado);
+});
+
 router.post("/:idCarr/finalizarcompra/:idPed", passport.authenticate('jwt', {session: false}) , async (req, res) =>{
     const postPedido = await carrito.guardarCarroEnPedido(
         req.params.idCarr,
@@ -50,32 +56,10 @@ router.post("/:idCarr/finalizarcompra/:idPed", passport.authenticate('jwt', {ses
     res.send(postPedido)
 })
 
-//NO SE DONDE PONERLO
-router.get("/mandarMail/:id", passport.authenticate('jwt', {session: false}) , async (req, res) => {
-    const carritoPorId = await carrito.listar(req.params.id);
-  
-    const transporter = createTransport({
-        service: "gmail",
-        port: 587, 
-        auth: {
-            user: process.env.TEST_MAIL, 
-            pass: process.env.PASS_APP
-        } 
-    });
-    
-    const mailOptions = {
-        from: 'Servidor Node.js',
-        to: process.env.TEST_MAIL, //NO ME TOMA EL REQ.SESSION.PASSPORT.USER
-        subject: 'Gracias por tu compra!',
-        html: '<h1>Agradecemos que confies en nosotros!</h1>'
-    }
-    
-    try {
-        const info = await transporter.sendMail(mailOptions)
-        console.log(info)
-    } catch (error) {
-        console.log(error)
-    }
-    res.send(carritoPorId);
-  });
+router.get("/pedido/:idPed", passport.authenticate('jwt', {session: false}) , async (req, res) =>{
+    const postPedido = await carrito.listarPedido(
+        req.params.idPed
+    );
+    res.send(postPedido)
+})
 export default router;

@@ -1,23 +1,21 @@
 import mongoose from "mongoose";
 import Producto from "./Producto.dao.class.js";
-import CarritoModel from "../models/CarritoModel.js"
-import PedidoModel from "../models/PedidoModel.js"
-import userModel from "../models/userSchema.js";
+import CarritoModel from "../models/CarritoModel.js";
+import PedidoModel from "../models/PedidoModel.js";
 
 export default class Carrito {
   constructor() {
     this.producto = new Producto();
-    this.carro = new CarritoModel();
     this.carritos = [];
     this.url = process.env.MONGOOSE_CONNECT;
     this.mongodb = mongoose.connect;
   }
 
   //CREAR CARRITO
-  async crearCarrito() {
+  async crearCarrito(email, dir) {
     try {
       await this.mongodb(this.url);
-      const carr = CarritoModel();
+      const carr = CarritoModel(email, dir);
       return await carr.save();
     } catch (e) {
       console.log(e);
@@ -31,9 +29,11 @@ export default class Carrito {
       const producto = await this.producto.listar(idProd);
       return await CarritoModel.findByIdAndUpdate(
         { _id: idCarrito },
-        { $push: { 
-          productos: producto
-        } }
+        {
+          $push: {
+            productos: producto,
+          },
+        }
       );
     } catch (e) {
       console.log(e);
@@ -101,11 +101,21 @@ export default class Carrito {
   async guardarCarroEnPedido(idCarr, idPed) {
     try {
       await this.mongodb(this.url);
-      const carr = CarritoModel.findById(idCarr);
+      const carr = await CarritoModel.findById(idCarr);
       return await PedidoModel.findByIdAndUpdate(
         { _id: idPed },
-        { $push: { carritos: carr } }
+        { $set: { carritos: carr } }
       );
+    } catch (e) {
+      console.log(e);
+    }
+  }
+
+  //MOSTRAR UN PEDIDO
+  async listarPedido(id) {
+    try {
+      await this.mongodb(this.url);
+      return await PedidoModel.findById(id);
     } catch (e) {
       console.log(e);
     }

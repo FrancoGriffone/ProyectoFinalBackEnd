@@ -1,7 +1,7 @@
-import mongoose from "mongoose";
+import mongoose, { Schema } from "mongoose";
 
 const pedidoSchema = new mongoose.Schema({
-    carrito: Array,
+    carritos: Array, //es esto o sino poner solo Array
     fecha: {
       type: Date,
       default: Date.now  
@@ -10,6 +10,7 @@ const pedidoSchema = new mongoose.Schema({
     ordenNum: Number,
     estado: String,
 });
+
 
 const PedidoModel = mongoose.model("pedidos", pedidoSchema);
 export default PedidoModel;

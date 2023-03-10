@@ -112,10 +112,11 @@ router.post(
     failureRedirect: "/login-error",
   }), async (req, res)=>{
     const user = await userModel.find({username: req.body.username})
-    console.log("el usuario es " + user.email)
+    console.log("el usuario es " + req.user.email)
     const payload = {
       name: req.body.username,
-      //email: email,
+      email: req.user.email,
+      direccion: req.user.email,
       iat: Math.floor(Date.now()/1000),
       exp: Math.floor(Date.now()/1000) + 60 * 60
     }
