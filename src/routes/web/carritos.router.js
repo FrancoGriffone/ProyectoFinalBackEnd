@@ -8,7 +8,13 @@ const router = express.Router();
 const carrito = new Carrito(); 
 
 router.post("/crearcarrito", passport.authenticate('jwt', {session: false}) , async (req, res) =>{
-    const carritoCreado = await carrito.crearCarrito();
+    let token = req.headers.authorization
+    token = token.replace('Bearer ', '')
+    const user = jwt.decode(token)
+    const carritoCreado = await carrito.crearCarrito({
+        email: user.email,
+        direccion: user.direccion
+    });
     res.send(carritoCreado);
 });
 
@@ -26,7 +32,6 @@ router.delete("/:id/borrarproducto/:id_prod", passport.authenticate('jwt', {sess
 });
 
 router.get("/", passport.authenticate('jwt', {session: false}) , async (req, res) => {
-    console.log(req.params)
     const listaCarritos = await carrito.listarAll();
     res.send(listaCarritos);
 });

@@ -116,7 +116,7 @@ router.post(
     const payload = {
       name: req.body.username,
       email: req.user.email,
-      direccion: req.user.email,
+      direccion: req.user.direccion,
       iat: Math.floor(Date.now()/1000),
       exp: Math.floor(Date.now()/1000) + 60 * 60
     }

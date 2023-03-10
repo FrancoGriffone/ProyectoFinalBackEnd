@@ -306,7 +306,7 @@
 					"response": []
 				},
 				{
-					"name": "confirmarCompra",
+					"name": "getPedidoId",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -319,6 +319,36 @@
 							"path": [
 								"mandarMail",
 								"63baf7ec3412f7cf13074e82"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "postNuevoPedido",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiRnJhbmNvIiwiaWF0IjoxNjc4NDEwNjU5LCJleHAiOjE2Nzg0MTQyNTl9.WXDzqqThNqpeq68g0Lxr0kcKEjxrGksq-pkt7KDDR74",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/carritos/crearpedido",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"carritos",
+								"crearpedido"
 							]
 						}
 					},
