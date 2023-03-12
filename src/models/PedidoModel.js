@@ -1,7 +1,7 @@
 import mongoose, { Schema } from "mongoose";
 
 const pedidoSchema = new mongoose.Schema({
-    carritos: Array, //es esto o sino poner solo Array
+    carritos: Array,
     fecha: {
       type: Date,
       default: Date.now  
